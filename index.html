@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SEED</title>
+	<script type="text/javascript" src="jquery.js"></script>
+</head>
+<style type="text/css">
+:root {
+  --darkgreen: #336f47;
+  --lightgreen: #6ca16c;
+}
+	.box{
+		background-color: #cecece;
+		box-shadow: 0px 0px 20px #aaa;
+		position: relative;
+	}
+	#grid{
+		
+	}
+	#side-menu{
+		box-shadow: 0px 0px 5px grey;
+		padding:20px;
+		z-index: 1;
+		
+	}
+	.gridbox{
+		width: 50px;
+		height: 50px;
+		margin: 10px;
+		background-color: grey;
+
+	}
+	.row{
+		display: flex;
+	}
+	.sidebutton{
+		font-size: 15px;
+		font-weight: 600;
+		color: var(--darkgreen);
+		background-color: var(--lightgreen);
+		margin-top:20px;
+		padding:10px;
+		box-shadow: 0px 0px 3px grey;
+		text-align: center;
+		width: 100px;
+	}
+	.sidevalue{    
+		width: 100px;
+	    margin-top: 20px;
+	    color: var(--lightgreen);
+	    background: var(--darkgreen);
+	    padding: 5px;
+	    box-shadow: 0px 0px 3px grey;
+	    display: flex;
+	    justify-content: space-between;
+	}
+	#main{
+		display: flex;
+		padding-left: 26%;
+		padding-top: 10%;
+	}
+	.choose{
+		background-color: #d4eacb;
+	}
+	.choosen{
+		background-color: #bdcfb5;
+	}
+	.fruit{
+		background-color: #ededed;
+	}
+	.apex{
+		position: absolute;
+		left: 55%;
+		top: 6%;
+		font-weight: 800;
+		font-size: 21px;
+	}
+	.price{
+	    position: absolute;
+	    left: 15%;
+	    top: 90%;
+	    font-weight: 800;
+	    font-size: 21px;
+
+	}
+	.hidden{
+		display: none;
+	}
+	#shop_box{    
+		position: absolute;
+	    margin: 30%;
+	    background: #ececec;
+	    padding: 4%;
+	    top: -16.8%;
+	    left: 42.5%;
+	}
+	.debug{
+		display: none;
+	}
+	.outerprogress{    
+		background: #9fb09f;
+	    height: 20px;
+	    width: 46%;
+	    margin-left: 25.9%;
+	    margin-top: 0%;
+	}
+	.innerprogress{
+		height: 20px;
+	    background: #336f47;
+	    border-radius: 10px;
+	    width: 60%;
+	}
+	#gameover{
+	    position: fixed;
+		top: 0;
+		left: -21%;
+		width: 100%;
+		height: 100%;
+		background: black;
+		color: white;
+		text-align: center;
+		padding: 19%;
+		font-size: 30px;
+		font-weight: 800;
+	}
+	#victory{
+	    position: fixed;
+		top: 0;
+		left: -21%;
+		width: 100%;
+		height: 100%;
+		background: WHITE;
+		color: BLACK;
+		text-align: center;
+		padding: 19%;
+		font-size: 30px;
+		font-weight: 800;
+	}
+</style>
+<body style="background-color: #b2c2b2;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;" >
+<div id="main">
+	<div class="box" id="side-menu">
+		<Div class="box" style="text-align: center;">LEVEL <span id="level"></span></Div>
+		<div class="box sidevalue"><div>Season:</div> <div id="season"></div></div>
+		<div class="box sidevalue"><div>Seeds:</div> <div id="seeds"></div></div>
+		<div class="box sidevalue hidden"><div>Fruits:</div> <div id="fruits"></div></div>
+		<div class="box sidevalue"><div>Cash:</div> $<div id="cash"></div></div>
+	</div>
+	<div class="box" id="grid">
+	</div>
+	<div class="box" id="side-menu">
+		<div class="box sidebutton" id="next">Next Season</div>
+		<div class="box sidebutton" id="plant">Plant Seed</div>
+		<div class="box sidebutton" id="sell">Sell Fruit</div>
+		<div class="box sidebutton" id="shop">Shop</div>
+		<div class="box sidebutton" id="restart" style="background: white;">RESTART</div>
+	</div>
+</div>
+<div id="shop_box" class="box hidden">
+	<div id="buy" style="position: relative;">
+	<img src="seed.png" width="50" style="border: solid 1px;border-radius: 5px;background-color: #d7eaff;"><span id="seedprice" class="price"></span>
+	</div>
+</div>
+<div class="outerprogress"><div class="innerprogress"></div></div>
+<div id="gameover" class="hidden">GAME OVER</div>
+<div id="victory" class="hidden">VICTORY!</div>
+</body>
+<script type="text/javascript">
+
+	var levels = []
+	var temp = { 
+			"level":1,
+			"seedprice":1,
+			"MAXfruit_price":4,
+			"victory_time":10,
+			"size":5
+		}
+	levels.push(temp)
+	temp = {
+			"level":2,
+			"seedprice":25,
+			"MAXfruit_price":75,
+			"victory_time":12,
+			"size":5
+		}
+	levels.push(temp)
+	
+
+
+	var season = 0, seeds = 1, fruits = 0, cash = 0;
+
+	var level,victory_time,size,seedprice,MAXfruit_price;
+
+
+	var lifespan = Array.from({length: 100}, () => -1)
+	var lifespan_vals = Array.from({length: 100}, () => (Math.floor(Math.random() * 5)+1))
+	var fruit_price = Array.from({length: 100}, () => -1)
+	
+
+	function update_values(i){
+		level = levels[i]["level"];
+		$("#level").text(level)
+		seedprice = levels[i]["seedprice"];
+		$("#seedprice").text(seedprice+"$")
+		MAXfruit_price = levels[i]["MAXfruit_price"];
+		victory_time = levels[i]["victory_time"];
+		size = levels[i]["size"]
+
+	}
+
+	function update_sidevalue(season,seeds,fruits,cash) {
+		$("#season").text(season);
+		$("#seeds").text(seeds);
+		$("#fruits").text(fruits);
+		$("#cash").text(cash);
+		var percentage = (season/victory_time)*100
+		$(".innerprogress").css("width",percentage+"%")
+		
+	}
+	function clean(id){
+		$("#"+id).toggleClass("choose")
+		$("#"+id).toggleClass("choosen")
+		$("#"+id).toggleClass("fruit")
+		$("#"+id).children()[1].remove()
+		$("#"+id).children()[1].remove()
+	}
+	function sell_fruits() {
+		var res = 0;
+			for(var i=0;i<100;i++){
+				if(fruit_price[i]!=-1){
+					clean(i)
+					res+=fruit_price[i];
+					fruit_price[i]=-1;
+				}
+			}
+			cash+=res
+			update_sidevalue(season,seeds,fruits,cash)
+	}
+	function next_season(){
+		
+		for (var i = lifespan.length - 1; i >= 0; i--) {
+			$("#debug"+i).text(lifespan[i])
+			if(lifespan[i]!=-1){
+				--lifespan[i];
+				if(lifespan[i]!=0 && !$("#"+i).hasClass("fruit")){
+					$("#lifespan"+i).text(lifespan[i]+"s")
+				}
+				if(lifespan[i]==0){
+					lifespan[i]==-1
+					fruit_price[i] = (Math.floor(Math.random() * MAXfruit_price)+1)
+					$("#img"+i).attr("src","fruit.png")
+					$("#lifespan"+i).text("$"+fruit_price[i])
+					$("#"+i).toggleClass("fruit")					
+				}
+			}
+		}
+		update_sidevalue(++season,seeds,fruits,cash)
+
+	}
+	function checkvictory(){
+		var victory = 1;
+		for (var i = size; i >= 1; i--) {			
+			for (var j = size - 1; j >= 0; j--) {
+				if(!($("#"+i+j).hasClass("choosen"))){
+					victory = 0;
+				}
+			}
+		}
+		if(victory==1){
+			$("#victory").toggleClass('hidden')
+			setTimeout(function(){
+				$("#victory").toggleClass('hidden')
+				next_season()
+			},500)
+			setTimeout(function(){
+				$("#victory").toggleClass('hidden')
+				next_season()
+			},1000)
+			setTimeout(function(){
+				$("#victory").toggleClass('hidden')
+				next_season()
+			},1500)
+			setTimeout(function(){
+				$("#victory").toggleClass('hidden')
+				next_season()
+			},2000)
+			setTimeout(function(){
+				$("#victory").toggleClass('hidden')
+				next_season()
+			},2500)
+			setTimeout(function(){
+				sell_fruits()
+				seeds=0
+				season=0
+				update_sidevalue(season,seeds)
+				update_values(1)
+			},3000)
+			return 1;
+		}
+		return 0;
+	}
+	$(function(){
+		update_values(0)
+		for (var i = size; i >= 1; i--) {
+			$("#grid").append("<div id='"+i+"' class='row'></div>")
+			for (var j = size - 1; j >= 0; j--) {
+				$("#"+i).append("<div id='"+i+j+"' class='box gridbox'><span class='debug' id='debug"+i+j+"'></span></div>")
+			}
+		}
+
+		update_sidevalue(season,seeds,fruits,cash)
+		$("#next").on('click',function(){
+			
+			if(!checkvictory() && season==victory_time){
+				$("#gameover").toggleClass("hidden")
+			}
+			next_season()
+		})
+		$("#plant").on('click',function(){
+			if(seeds==0){
+				alert("you finished the seeds!")
+			}
+			else{
+				$(".gridbox").toggleClass("choose")
+			}
+		})
+		$(".gridbox").on('click',function(){
+			if($(this).hasClass("choose") && seeds>0){
+				var index = parseInt($(this).attr("id"))
+				lifespan[index] = lifespan_vals[index]
+				$(this).append("<img id='img"+index+"' src='seed.png' width='50'><span id='lifespan"+index+"' class='apex'>"+lifespan[index]+"s</span>")
+				$(this).toggleClass("choose")
+				$(this).toggleClass("choosen")
+				update_sidevalue(season,--seeds,fruits,cash)
+				if(seeds==0){
+					$(".gridbox").toggleClass("choose")
+				}
+			}
+
+		})
+		$("#sell").on('click',function(){
+			sell_fruits();
+		})
+		$("#shop").on('click',function(){
+			$("#shop_box").toggleClass("hidden")
+		})
+		$("#buy").on('click',function(){
+			if(cash<seedprice){
+				alert("no money!")			
+			}
+			else{
+				cash = cash-seedprice
+
+				update_sidevalue(season,++seeds,fruits,cash)
+				if(cash==0){
+					$("#shop_box").toggleClass("hidden")
+				}
+			}
+		})
+		$("#restart").on('click',function(){
+			location.reload()
+		})
+
+	})
+</script>
+</html>
