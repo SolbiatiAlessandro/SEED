@@ -15,13 +15,13 @@
 		position: relative;
 	}
 	#grid{
-		
+
 	}
 	#side-menu{
 		box-shadow: 0px 0px 5px grey;
 		padding:20px;
 		z-index: 1;
-		
+
 	}
 	.gridbox{
 		width: 50px;
@@ -44,7 +44,7 @@
 		text-align: center;
 		width: 100px;
 	}
-	.sidevalue{    
+	.sidevalue{
 		width: 100px;
 	    margin-top: 20px;
 	    color: var(--lightgreen);
@@ -76,28 +76,28 @@
 		font-size: 21px;
 	}
 	.price{
-	    position: absolute;
-	    left: 15%;
-	    top: 90%;
-	    font-weight: 800;
-	    font-size: 21px;
-
+      font-weight: 500;
+    font-size: 15px;
+    border-top: solid 1px;
+    margin: 0px 5px;
 	}
 	.hidden{
 		display: none;
 	}
-	#shop_box{    
-		position: absolute;
-	    margin: 30%;
-	    background: #ececec;
-	    padding: 4%;
-	    top: -16.8%;
-	    left: 42.5%;
+	#shop_box{
+    position: absolute;
+    margin: 30%;
+    background: #ececec;
+    padding: 10px;
+    top: -40%;
+    left: 43.5%;
+    height: 52%;
+    width: 150px;
 	}
 	.debug{
 		display: none;
 	}
-	.outerprogress{    
+	.outerprogress{
 		background: #9fb09f;
 	    height: 20px;
 	    width: 46%;
@@ -136,29 +136,77 @@
 		font-size: 30px;
 		font-weight: 800;
 	}
+	.inventory{
+    height: 61%;
+    margin-top: 10%;
+    background: #dedede;
+		text-align: center;
+		padding: 5%;
+		width: 100px;
+	}
+	.inventory_item{
+    width:50%;
+    margin: 10px;
+    background: white;
+    border-radius: 56%;
+    padding: 7%;
+		border:solid 2px #699e65;
+	}
+	.inventory_item:hover{
+		background: #d4eacb;
+	}
+	.inventory_label{
+      position: absolute;
+    top: 66%;
+    right: 8%;
+    background: #699e65;
+    padding: 0px 8px;
+    color: #336e47;
+    border: solid 1px #336e47;
+    font-size: 14px;
+    border-radius: 5px;
+	}
+	.shopimg{
+
+      border: solid 1px;
+    border-radius: 5px;
+    background-color: #d7eaff;
+    width: 68%;
+		margin:auto;
+		padding:5px;
+	}
 </style>
 <body style="background-color: #b2c2b2;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;" >
 <div id="main">
 	<div class="box" id="side-menu">
 		<Div class="box" style="text-align: center;">LEVEL <span id="level"></span></Div>
 		<div class="box sidevalue"><div>Season:</div> <div id="season"></div></div>
-		<div class="box sidevalue"><div>Seeds:</div> <div id="seeds"></div></div>
-		<div class="box sidevalue hidden"><div>Fruits:</div> <div id="fruits"></div></div>
 		<div class="box sidevalue"><div>Cash:</div> $<div id="cash"></div></div>
+		<div class="box inventory"></div>
 	</div>
 	<div class="box" id="grid">
 	</div>
 	<div class="box" id="side-menu">
 		<div class="box sidebutton" id="next">Next Season</div>
-		<div class="box sidebutton" id="plant">Plant Seed</div>
-		<div class="box sidebutton" id="sell">Sell Fruit</div>
 		<div class="box sidebutton" id="shop">Shop</div>
 		<div class="box sidebutton" id="restart" style="background: white;">RESTART</div>
 	</div>
 </div>
-<div id="shop_box" class="box hidden">
-	<div id="buy" style="position: relative;">
-	<img src="seed.png" width="50" style="border: solid 1px;border-radius: 5px;background-color: #d7eaff;"><span id="seedprice" class="price"></span>
+<div id="shop_box" class="box hidden" style="text-align:center;">
+	<h1 style="font-size:  15px;line-height:  5px;">SHOP</h1>
+	<div  style="display:flex;border-top:solid 1px #336f47;">
+		<div style="position:relative;width:75px;border-right:solid 1px #336f47; ">
+			<h2 style="font-size:  13px;line-height:  5px;">SELL</h2>
+			<div class="shopimg" id="sell_tinifruit">
+			<img src="tinifruit.png" width="50" ><div class="price">$5</div>
+		</div>
+		</div>
+		<div style="position:relative;width:75px;">
+			<h2 style="font-size:  13px;line-height:  5px;">BUY</h2>
+			<div class="shopimg" id="buy_tiniseed">
+			<img src="tiniseed.png" width="50" ><div class="price">$1</div>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="outerprogress"><div class="innerprogress"></div></div>
@@ -168,7 +216,7 @@
 <script type="text/javascript">
 
 	var levels = []
-	var temp = { 
+	var temp = {
 			"level":1,
 			"seedprice":1,
 			"MAXfruit_price":4,
@@ -184,8 +232,47 @@
 			"size":5
 		}
 	levels.push(temp)
-	
 
+	var inventory = [
+			{
+			"name":"tiniseed",
+			"quantity":2
+		},
+			{
+			"name":"ocreseed",
+			"quantity":0
+		},
+			{
+			"name":"duperseed",
+			"quantity":0
+		},
+			{
+			"name":"tinifruit",
+			"quantity":0
+		},
+			{
+			"name":"ocrefruit",
+			"quantity":0
+		},
+			{
+			"name":"duperfruit",
+			"quantity":0
+		}
+	]
+
+	function update_inventory(){
+		var temp  = $(".inventory").children().length;
+		for (var i = 0; i < temp; i++) {
+			$(".inventory").children()[0].remove()
+		}
+		for (var i=0; i<inventory.length;i++) {
+			var item = inventory[i];
+			console.log(item)
+			if (item["quantity"]>0) {
+				$(".inventory").append("<div style='position:relative;'><img src='"+item["name"]+".png' class='inventory_item' id='"+item["name"]+"'><span class='inventory_label'>"+item["quantity"]+"</span></div>");
+			}
+		}
+	}
 
 	var season = 0, seeds = 1, fruits = 0, cash = 0;
 
@@ -195,7 +282,7 @@
 	var lifespan = Array.from({length: 100}, () => -1)
 	var lifespan_vals = Array.from({length: 100}, () => (Math.floor(Math.random() * 5)+1))
 	var fruit_price = Array.from({length: 100}, () => -1)
-	
+
 
 	function update_values(i){
 		level = levels[i]["level"];
@@ -205,9 +292,7 @@
 		MAXfruit_price = levels[i]["MAXfruit_price"];
 		victory_time = levels[i]["victory_time"];
 		size = levels[i]["size"]
-
 	}
-
 	function update_sidevalue(season,seeds,fruits,cash) {
 		$("#season").text(season);
 		$("#seeds").text(seeds);
@@ -215,12 +300,11 @@
 		$("#cash").text(cash);
 		var percentage = (season/victory_time)*100
 		$(".innerprogress").css("width",percentage+"%")
-		
 	}
 	function clean(id){
-		$("#"+id).toggleClass("choose")
 		$("#"+id).toggleClass("choosen")
 		$("#"+id).toggleClass("fruit")
+		$("#"+id).toggleClass("tinifruit")
 		$("#"+id).children()[1].remove()
 		$("#"+id).children()[1].remove()
 	}
@@ -237,9 +321,9 @@
 			update_sidevalue(season,seeds,fruits,cash)
 	}
 	function next_season(){
-		
+
 		for (var i = lifespan.length - 1; i >= 0; i--) {
-			$("#debug"+i).text(lifespan[i])
+			//$("#debug"+i).text(lifespan[i])
 			if(lifespan[i]!=-1){
 				--lifespan[i];
 				if(lifespan[i]!=0 && !$("#"+i).hasClass("fruit")){
@@ -247,10 +331,11 @@
 				}
 				if(lifespan[i]==0){
 					lifespan[i]==-1
-					fruit_price[i] = (Math.floor(Math.random() * MAXfruit_price)+1)
-					$("#img"+i).attr("src","fruit.png")
-					$("#lifespan"+i).text("$"+fruit_price[i])
-					$("#"+i).toggleClass("fruit")					
+					//fruit_price[i] = (Math.floor(Math.random() * MAXfruit_price)+1)
+					$("#img"+i).attr("src","tinifruit.png")
+					$("#lifespan"+i).text("")
+					$("#"+i).toggleClass("fruit")
+					$("#"+i).toggleClass("tinifruit")
 				}
 			}
 		}
@@ -259,7 +344,7 @@
 	}
 	function checkvictory(){
 		var victory = 1;
-		for (var i = size; i >= 1; i--) {			
+		for (var i = size; i >= 1; i--) {
 			for (var j = size - 1; j >= 0; j--) {
 				if(!($("#"+i+j).hasClass("choosen"))){
 					victory = 0;
@@ -267,27 +352,12 @@
 			}
 		}
 		if(victory==1){
-			$("#victory").toggleClass('hidden')
-			setTimeout(function(){
-				$("#victory").toggleClass('hidden')
-				next_season()
-			},500)
-			setTimeout(function(){
-				$("#victory").toggleClass('hidden')
-				next_season()
-			},1000)
-			setTimeout(function(){
-				$("#victory").toggleClass('hidden')
-				next_season()
-			},1500)
-			setTimeout(function(){
-				$("#victory").toggleClass('hidden')
-				next_season()
-			},2000)
-			setTimeout(function(){
-				$("#victory").toggleClass('hidden')
-				next_season()
-			},2500)
+			for(var i = 0; i<3000; i=i+500){
+				setTimeout(function(){
+					$("#victory").toggleClass('hidden')
+					next_season()
+				},i)
+			}
 			setTimeout(function(){
 				sell_fruits()
 				seeds=0
@@ -300,6 +370,9 @@
 		return 0;
 	}
 	$(function(){
+
+		update_inventory()
+
 		update_values(0)
 		for (var i = size; i >= 1; i--) {
 			$("#grid").append("<div id='"+i+"' class='row'></div>")
@@ -310,33 +383,29 @@
 
 		update_sidevalue(season,seeds,fruits,cash)
 		$("#next").on('click',function(){
-			
+
 			if(!checkvictory() && season==victory_time){
 				$("#gameover").toggleClass("hidden")
 			}
 			next_season()
 		})
-		$("#plant").on('click',function(){
-			if(seeds==0){
-				alert("you finished the seeds!")
-			}
-			else{
-				$(".gridbox").toggleClass("choose")
-			}
-		})
 		$(".gridbox").on('click',function(){
-			if($(this).hasClass("choose") && seeds>0){
+
+			if($(this).hasClass("choose") && $(this).hasClass("tiniseed")){
+
 				var index = parseInt($(this).attr("id"))
 				lifespan[index] = lifespan_vals[index]
-				$(this).append("<img id='img"+index+"' src='seed.png' width='50'><span id='lifespan"+index+"' class='apex'>"+lifespan[index]+"s</span>")
-				$(this).toggleClass("choose")
-				$(this).toggleClass("choosen")
-				update_sidevalue(season,--seeds,fruits,cash)
-				if(seeds==0){
-					$(".gridbox").toggleClass("choose")
-				}
-			}
+				$(this).append("<img id='img"+index+"' src='tiniseed.png' width='50'><span id='lifespan"+index+"' class='apex'>"+lifespan[index]+"s</span>")
 
+				$(this).toggleClass("choosen")
+
+				inventory[0]["quantity"]--;
+				if(inventory[0]["quantity"]==0){
+					$(".gridbox").toggleClass("choose")
+					$(".gridbox").toggleClass("tiniseed");
+				}
+				update_inventory()
+			}
 		})
 		$("#sell").on('click',function(){
 			sell_fruits();
@@ -346,11 +415,10 @@
 		})
 		$("#buy").on('click',function(){
 			if(cash<seedprice){
-				alert("no money!")			
+				alert("no money!")
 			}
 			else{
 				cash = cash-seedprice
-
 				update_sidevalue(season,++seeds,fruits,cash)
 				if(cash==0){
 					$("#shop_box").toggleClass("hidden")
@@ -359,6 +427,46 @@
 		})
 		$("#restart").on('click',function(){
 			location.reload()
+		})
+
+		$("body").on('click','#tiniseed',function(){
+				$(".gridbox").toggleClass("choose");
+				$(".gridbox").toggleClass("tiniseed");
+				$("#tiniseed").css('background',"#d4eacb")
+		})
+
+		$("body").on('click','.tinifruit',function(){
+				var i = $(this).attr("id");
+				clean(i);
+				inventory[3]["quantity"]++;
+				update_inventory()
+		})
+		$("body").on('click','#tinifruit',function(){
+				inventory[3]["quantity"]--;
+				inventory[0]["quantity"] += (Math.floor(Math.random() * 3)+1)
+				update_inventory()
+		})
+		$("#buy_tiniseed").on('click',function(){
+			if(cash<1){
+				alert("no money!")
+			}
+			else{
+				cash--
+				update_sidevalue(season,seeds,fruits,cash)
+				inventory[0]["quantity"]++
+				update_inventory();
+			}
+		})
+		$("#sell_tinifruit").on('click',function(){
+			if(inventory[3]["quantity"]<1){
+				alert("no fruit!")
+			}
+			else{
+				inventory[3]["quantity"]--
+				cash=cash+5
+				update_sidevalue(season,seeds,fruits,cash)
+				update_inventory();
+			}
 		})
 
 	})
