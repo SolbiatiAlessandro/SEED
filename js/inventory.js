@@ -1,0 +1,26 @@
+var inventory = [
+		{
+		"name":"tiniseed",
+		"quantity":1
+	},
+		{
+		"name":"ocreseed",
+		"quantity":0
+	},
+		{
+		"name":"duperseed",
+		"quantity":0
+	},
+		{
+		"name":"tinifruit",
+		"quantity":0
+	},
+		{
+		"name":"ocrefruit",
+		"quantity":0
+	},
+		{
+		"name":"duperfruit",
+		"quantity":0
+	}
+]

@@ -1,0 +1,197 @@
+:root {
+  --darkgreen: #336f47;
+  --lightgreen: #6ca16c;
+}
+	.box{
+		background-color: #cecece;
+		box-shadow: 0px 0px 20px #aaa;
+		position: relative;
+	}
+	#grid{
+
+	}
+	#side-menu{
+		box-shadow: 0px 0px 5px grey;
+		padding:20px;
+		z-index: 1;
+
+	}
+	.gridbox{
+		width: 50px;
+		height: 50px;
+		margin: 10px;
+		background-color: grey;
+
+	}
+	.row{
+		display: flex;
+	}
+	.sidebutton{
+		font-size: 15px;
+		font-weight: 600;
+		color: var(--darkgreen);
+		background-color: var(--lightgreen);
+		margin-top:20px;
+		padding:10px;
+		box-shadow: 0px 0px 3px grey;
+		text-align: center;
+		width: 100px;
+	}
+	.sidevalue{
+		width: 100px;
+	    margin-top: 20px;
+	    color: var(--lightgreen);
+	    background: var(--darkgreen);
+	    padding: 5px;
+	    box-shadow: 0px 0px 3px grey;
+	    display: flex;
+	    justify-content: space-between;
+	}
+	#main{
+		display: flex;
+		padding-left: 26%;
+		padding-top: 10%;
+	}
+	.choose{
+		background-color: #d4eacb;
+	}
+	.choosen{
+		background-color: #bdcfb5;
+	}
+	.fruit{
+		background-color: #ededed;
+	}
+	.apex{
+		position: absolute;
+		left: 55%;
+		top: 6%;
+		font-weight: 800;
+		font-size: 21px;
+	}
+	.price{
+      font-weight: 500;
+    font-size: 15px;
+    border-top: solid 1px;
+    margin: 0px 5px;
+	}
+	.hidden{
+		display: none;
+	}
+	#shop_box{
+		position: absolute;
+		margin: 30%;
+		background: #cecece;
+		padding: 10px;
+		top: -36%;
+		left: 43.5%;
+		height: 42%;
+		width: 23%;
+		z-index: 5;
+	}
+	.debug{
+		display: none;
+	}
+	.outerprogress{
+		background: #9fb09f;
+	    height: 20px;
+	    width: 46%;
+	    margin-left: 25.9%;
+	    margin-top: 0%;
+	}
+	.innerprogress{
+		height: 20px;
+	    background: #336f47;
+	    border-radius: 10px;
+	    width: 60%;
+	}
+	#gameover{
+	    position: fixed;
+		top: 0;
+		left: -21%;
+		width: 100%;
+		height: 100%;
+		background: black;
+		color: white;
+		text-align: center;
+		padding: 19%;
+		font-size: 30px;
+		font-weight: 800;
+	}
+	#victory{
+	    position: fixed;
+		top: 0;
+		left: -21%;
+		width: 100%;
+		height: 100%;
+		background: WHITE;
+		color: BLACK;
+		text-align: center;
+		padding: 19%;
+		font-size: 30px;
+		font-weight: 800;
+	}
+	.inventory{
+    height: 61%;
+    margin-top: 10%;
+    background: #dedede;
+		text-align: center;
+		padding: 5%;
+		width: 100px;
+	}
+	.inventory_item{
+    width:50%;
+    margin: 10px;
+    background: white;
+    border-radius: 56%;
+    padding: 7%;
+		border:solid 2px #699e65;
+	}
+	.inventory_item:hover{
+		background: #d4eacb;
+	}
+	.inventory_label{
+      position: absolute;
+    top: 66%;
+    right: 8%;
+    background: #699e65;
+    padding: 0px 8px;
+    color: #336e47;
+    border: solid 1px #336e47;
+    font-size: 14px;
+    border-radius: 5px;
+	}
+	.shopimg{
+border-radius: 5px;
+
+background-color: #d7eaff;
+
+width: 68%;
+
+margin: auto;
+
+padding: 5% 15%;
+	}
+	.shoplabel{
+		line-height: 0px;
+
+font-size: 13px;
+
+padding-top: 15%;
+
+margin-top: -19%;
+
+background-color: white;
+
+margin-bottom: 5%;
+
+height: 13px;
+
+border-radius: 5px;
+
+font-weight: 800; 
+	}
+	.shopcard{
+		position:relative;
+		width:75px;
+		margin:2%;
+	}
