@@ -5,14 +5,22 @@ var level,victory_time,size,seedprice,MAXfruit_price;
 
 var lifespan = Array.from({length: 100}, () => -1)
 var lifespan_vals = Array.from({length: 100}, () => (Math.floor(Math.random() * 5)+1))
-var fruit_price = Array.from({length: 100}, () => -1)
+
 
 
 $(function(){
 
 	update_inventory()
-
+	update_price()
 	update_values(0)
+	update_sidevalue()
+
+	$("#achievement").text(achievements[0].name)
+	$("#prize").text(achievements[0].prize)
+	$("#achievement_tot")[0].innerHTML = (achievements.length)
+	$("#achievement_curr")[0].innerHTML = "1"
+
+
 	for (var i = size; i >= 1; i--) {
 		$("#grid").append("<div id='"+i+"' class='row'></div>")
 		for (var j = size - 1; j >= 0; j--) {
@@ -20,21 +28,22 @@ $(function(){
 		}
 	}
 
-	update_sidevalue(season,seeds,fruits,cash)
-	$("#next").on('click',function(){
+	
 
-		if(!checkvictory() && season==victory_time){
-			$("#gameover").toggleClass("hidden")
-		}
+	$("body").on('click',function() {
+		checkachievements();
+	})
+
+	$("#next").on('click',function(){
 		next_season()
 	})
 	$(".gridbox").on('click',function(){
 
-		if($(this).hasClass("choose") && $(this).hasClass("tiniseed")){
+		if($(this).hasClass("choose") && $(this).hasClass("tiniseed") && !($(this).hasClass("choosen"))){
 
 			var index = parseInt($(this).attr("id"))
 			lifespan[index] = lifespan_vals[index]
-			$(this).append("<img id='img"+index+"' src='img/tiniseed.png' width='50'><span id='lifespan"+index+"' class='apex'>"+lifespan[index]+"s</span>")
+			$(this).append("<img id='img"+index+"' src='img/tiniseed.png' class='grid_tiniseed'><span id='lifespan"+index+"' class='apex'>"+lifespan[index]+"s</span>")
 
 			$(this).toggleClass("choosen")
 
@@ -51,18 +60,6 @@ $(function(){
 	})
 	$("#shop").on('click',function(){
 		$("#shop_box").toggleClass("hidden")
-	})
-	$("#buy").on('click',function(){
-		if(cash<seedprice){
-			alert("no money!")
-		}
-		else{
-			cash = cash-seedprice
-			update_sidevalue(season,++seeds,fruits,cash)
-			if(cash==0){
-				$("#shop_box").toggleClass("hidden")
-			}
-		}
 	})
 	$("#restart").on('click',function(){
 		location.reload()
@@ -90,8 +87,8 @@ $(function(){
 			alert("no money!")
 		}
 		else{
-			cash--
-			update_sidevalue(season,seeds,fruits,cash)
+			cash-=inventory[0]["price"]
+			update_sidevalue()
 			inventory[0]["quantity"]++
 			update_inventory();
 		}
@@ -102,8 +99,8 @@ $(function(){
 		}
 		else{
 			inventory[3]["quantity"]--
-			cash=cash+5
-			update_sidevalue(season,seeds,fruits,cash)
+			cash=cash+inventory[3]["price"]
+			update_sidevalue()
 			update_inventory();
 		}
 	})

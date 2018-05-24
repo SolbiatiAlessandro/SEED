@@ -22,7 +22,7 @@
 	</div>
 </div>
 <div id="shop_box" class="box hidden" style="text-align:center;">
-	<h1 style="font-size:  15px;background: #6ca16c;padding: 2%;color: #336f47;font-weight: 700;">SHOP</h1>
+	<h1 style="font-size:  15px;background: #e4deb5;padding: 2%;color: #1e3c90;font-weight: 700;box-shadow: 0px 0px 1px #1e3c90;">SHOP</h1>
 	<div  style="display:flex;">
 		<div class="shopcard">
 			
@@ -31,7 +31,7 @@
 			<img src="img/tinifruit.png" width="50" >
 			<div class="shopbtn">
 				<h2 style="font-size:  13px;line-height:  5px;">SELL</h2>
-				<div class="price">$5</div>
+				<div id="price_tinifruit" class="price">$5<div><img src='img/up.png' width='20'></div></div>
 			</div>
 		</div>
 		</div>
@@ -42,13 +42,21 @@
 			<img src="img/tiniseed.png" width="50" >
 			<div class="shopbtn">
 				<h2 style="font-size:  13px;line-height:  5px;">BUY</h2>
-				<div class="price">$1</div>
+				<div id="price_tiniseed" class="price">$1</div>
 			</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="outerprogress"><div class="innerprogress"></div></div>
+<!--<div class="outerprogress"><div class="innerprogress"></div></div>-->
+<div class="achievement_box" style="justify-content: center;height: 5px;border-bottom: solid 1px;">
+	<div style="margin-top: -1%;">ACHIEVEMENT <span id="achievement_curr"></span>/<span id="achievement_tot"></span>
+	</div>
+</div>
+<div class="achievement_box">
+	<div id="achievement" style="font-weight: 600;text-transform: uppercase;"></div>
+	<div id="prize" style="position: relative;"></div>
+</div>
 <div id="gameover" class="hidden">GAME OVER</div>
 <div id="victory" class="hidden">VICTORY!</div>
 </body>

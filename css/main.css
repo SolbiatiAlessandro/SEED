@@ -1,9 +1,9 @@
 :root {
-  --darkgreen: #336f47;
-  --lightgreen: #6ca16c;
+  --darkgreen: #344798;
+  --lightgreen: #8bced9;
 }
 	.box{
-		background-color: #cecece;
+		background-color: #fffbe6;
 		box-shadow: 0px 0px 20px #aaa;
 		position: relative;
 	}
@@ -20,7 +20,7 @@
 		width: 50px;
 		height: 50px;
 		margin: 10px;
-		background-color: grey;
+		background-color: #abacad;
 
 	}
 	.row{
@@ -53,27 +53,33 @@
 		padding-top: 10%;
 	}
 	.choose{
-		background-color: #d4eacb;
+		background-color: #e4d043;
 	}
 	.choosen{
-		background-color: #bdcfb5;
+		background-color: #e4d043;
 	}
 	.fruit{
-		background-color: #ededed;
+		background-color: #3fa86a;
 	}
 	.apex{
 		position: absolute;
-		left: 55%;
-		top: 6%;
+		left: 65%;
+		top: 1%;
 		font-weight: 800;
-		font-size: 21px;
+		color:#272414;
+		font-size: 15px;
 	}
-	.price{font-weight: 500;
+	.price{
+
+		font-weight: 500;
 font-size: 13px;
-margin: 11% 11%;
-background: #d7eaff;
+margin: 7% 11%;
+background: #e4deb5;
 color: #192b4b;
-padding: 1% 7%;
+padding: 0% 7%;
+box-shadow: inset 0px 0px 2px #ececec;
+width: 35%;
+display: flex;
 	}
 	.hidden{
 		display: none;
@@ -142,13 +148,13 @@ padding: 1% 7%;
 	.inventory_item{
     width:50%;
     margin: 10px;
-    background: white;
+    background-color: #e4deb5;
     border-radius: 56%;
     padding: 7%;
 		border:solid 2px #699e65;
 	}
 	.inventory_item:hover{
-		background: #d4eacb;
+		background: #e4d043 !important;
 	}
 	.inventory_label{
       position: absolute;
@@ -164,7 +170,7 @@ padding: 1% 7%;
 	.shopimg{
 border-radius: 5px;
 
-background-color: #d7eaff;
+background-color: #e4deb5;
 
 width: 68%;
 
@@ -173,36 +179,70 @@ margin: auto;
 padding: 5% 15%;
 	}
 	.shoplabel{
-		line-height: 0px;
-
-font-size: 13px;
-
-padding-top: 15%;
-
-margin-top: -19%;
-
-background-color: white;
-
-margin-bottom: 5%;
-
-height: 13px;
-
-border-radius: 5px;
-
-font-weight: 800; 
+		    line-height: 0px;
+    font-size: 13px;
+    padding-top: 15%;
+    margin-top: -19%;
+    background-color: #68a8bc;
+    margin-bottom: 5%;
+    height: 13px;
+    border-radius: 5px;
+    font-weight: 800;
+    color: #e4deb5;
+    padding-left: 6%;
+    padding-right: 6%;
+    width: 100%;
+    margin-left: -7%;
 	}
 	.shopcard{
 		position:relative;
 		width:75px;
+		box-shadow: 0px 0px 10px #a5a3a3;
 		margin:2%;
 	}
 	.shopbtn{
-		    display: flex;
-    background: cornflowerblue;
-    padding: 1% 3%;
-    box-shadow: 0px 0px 1px black;
-    color: #d7eaff;
-    width:120%;
-    margin-left:-10%;
 
+		    display: flex;
+    background: #8bced9;
+    padding: 1% 3%;
+    box-shadow: 0px 0px 3px #cecece;
+    color: #e4deb5;
+    width: 140%;
+    margin-left: -21%;
+
+	}
+	#tiniseed{
+		width: 25%;
+	padding: 20%;
+	}
+	.grid_tiniseed{
+		width: 30px;
+		margin: 18%;
+	}
+	.grid_tinifruit{
+		width: 50px;
+	}
+	.arrow{
+		    position: absolute;
+    left: 80%;
+    top: 67%;
+	}
+	.achievement_box{padding: 0.5% 1%;
+background: #9fb09f;
+height: 20px;
+width: 44.5%;
+margin-left: 25.9%;
+margin-top: 0%;
+display: flex;
+justify-content: space-between;
+color: white;
+	}
+	.achieved{
+		background: #49b149;
+	}
+	.prizeimg{
+		    width: 50px;
+    position: absolute;
+    top: -25px;
+    left: -50px;
 	}
