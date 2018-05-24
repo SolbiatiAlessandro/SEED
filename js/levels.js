@@ -18,7 +18,7 @@ var levels = [
 
 var achievements = [
 	{
-		name:"plant your first seed",
+		name:"Plant your first seed",
 		completed:0,
 		prize:"$ 1",
 		img:"",
@@ -36,12 +36,15 @@ var achievements = [
 		}
 	},
 	{
-		name:"go to the next season",
+		name:"Go to the next season",
 		completed:0,
 		prize:"UNLOCK ",
 		img:"img/tinifruit.png",
 		getprize:function(){
-			alert("tini fruit UNLOCKED");
+			msg = "Tinifruit - Unlocked"
+			$("#message")[0].innerHTML = "<div>"+msg+"</div><img src='"+this.img+"' class='popupimg'>"
+			$("#opacityscreen").removeClass("hidden")
+			$("#popup").removeClass("hidden")
 		},
 		achieved:function(){
 			if(season==1){
@@ -53,13 +56,15 @@ var achievements = [
 		}
 	},
 	{
-		name:"get your first fruit",
+		name:"Get your first fruit",
 		completed:0,
 		prize:"UNLOCK shop",
 		img:"",
 		getprize:function(){
-			$("#shop_box").toggleClass("hidden")
-			alert("shop UNLOCKED");
+			msg = "Shop - Unlocked"
+			$("#message")[0].innerHTML = "<div>"+msg+"</div><img src='"+this.img+"' class='popupimg'>"
+			$("#opacityscreen").removeClass("hidden")
+			$("#popup").removeClass("hidden")
 		},
 		achieved:function(){
 			if(inventory[3].quantity==1){

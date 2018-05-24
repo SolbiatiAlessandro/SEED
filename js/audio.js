@@ -38,12 +38,4 @@ function playTrack(url) {
   request.send();
 }
 
-var tracks = document.getElementsByClassName('track');
 
-for (var i = 0, len = tracks.length; i < len; i++) {
-  tracks[i].addEventListener('click', function(e){
-
-    playTrack(this.href);
-    e.preventDefault();
-  });
-}

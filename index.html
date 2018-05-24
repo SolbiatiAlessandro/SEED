@@ -5,10 +5,10 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body style="background-color: #b2c2b2;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;" >
+<body style="background-color: #b2c2b2;" >
 <div id="main">
 	<div class="box" id="side-menu">
-		<Div class="box" style="text-align: center;">LEVEL <span id="level"></span></Div>
+		<!--<Div class="box" style="text-align: center;">LEVEL <span id="level"></span></Div>-->
 		<div class="box sidevalue"><div>Season:</div> <div id="season"></div></div>
 		<div class="box sidevalue"><div>Cash:</div> $<div id="cash"></div></div>
 		<div class="box inventory"></div>
@@ -49,21 +49,26 @@
 	</div>
 </div>
 <!--<div class="outerprogress"><div class="innerprogress"></div></div>-->
-<div class="achievement_box" style="justify-content: center;height: 5px;border-bottom: solid 1px;">
+<div class="achievement_box" style="justify-content: center;height: 5px;border-bottom: solid 1px;padding-top:1%;"">
 	<div style="margin-top: -1%;">ACHIEVEMENT <span id="achievement_curr"></span>/<span id="achievement_tot"></span>
 	</div>
 </div>
 <div class="achievement_box">
-	<div id="achievement" style="font-weight: 600;text-transform: uppercase;"></div>
+	<div id="achievement" style="font-weight: 600;"></div>
 	<div id="prize" style="position: relative;"></div>
 </div>
 
-<a class="track" href="https://github.com/SolbiatiAlessandro/SEED/blob/master/sounds/Seeds0.mp3">Seed0.mp3</a>
+<div id="opacityscreen" class="hidden"></div>
+<div id="popup" class="hidden">
+	<div id="message" style="font-weight: 600;text-align: center;">New fruit unlocked</div>
+	<button class="okbutton" onclick="removepopup()">ok</button>
+</div>
+
 
 </body>
 <script type="text/javascript" src="js/inventory.js"></script>
 <script type="text/javascript" src="js/levels.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/audio.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </html>

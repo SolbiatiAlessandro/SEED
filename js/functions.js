@@ -126,9 +126,13 @@ function checkachievements(){
 			},2000)
 		}
 		else{
-			$("#achievement").text("YOU COMPLETED ALL THE GOALS! ")
+			$("#achievement").text("You completed all the goals! ")
 			$("#prize")[0].innerHTML = "EARNED $ "+cash
 			$("#achievement_curr")[0].innerHTML = ((i))
 		}
 	}
+}
+function removepopup(){
+	$("#popup").addClass("hidden")
+	$("#opacityscreen").addClass("hidden")
 }
