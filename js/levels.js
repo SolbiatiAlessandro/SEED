@@ -16,18 +16,22 @@ var levels = [
 	}
 ]
 
+var prizes = 0
 var achievements = [
 	{
-		name:"Plant your first seed",
+		name:"Plant a tiniseed",
 		completed:0,
-		prize:"$ 1",
-		img:"",
+		prize:"2 ",
+		img:"img/tiniseed.png",
 		getprize:function(){
-			cash++;
-			update_sidevalue()		
+			if(prizes){
+				inventory[0].quantity++;
+				inventory[0].quantity++;
+				update_inventory();		
+			}
 		},
 		achieved:function(){
-			if(inventory[0].quantity==0){
+			if(inventory[0].quantity==2){
 				this.completed=1;
 				this.getprize()
 				return 1;
@@ -35,6 +39,7 @@ var achievements = [
 			return 0;
 		}
 	},
+	/*
 	{
 		name:"Go to the next season",
 		completed:0,
@@ -54,17 +59,19 @@ var achievements = [
 			}
 			return 0;
 		}
-	},
+	},*/
 	{
-		name:"Get your first fruit",
+		name:"Harvest a tinifruit",
 		completed:0,
 		prize:"UNLOCK shop",
 		img:"",
 		getprize:function(){
-			msg = "Shop - Unlocked"
-			$("#message")[0].innerHTML = "<div>"+msg+"</div><img src='"+this.img+"' class='popupimg'>"
-			$("#opacityscreen").removeClass("hidden")
-			$("#popup").removeClass("hidden")
+			if(prizes){
+				msg = "Shop - Unlocked"
+				$("#message")[0].innerHTML = "<div>"+msg+"</div><img src='"+this.img+"' class='popupimg'>"
+				$("#opacityscreen").removeClass("hidden")
+				$("#popup").removeClass("hidden")
+			}
 		},
 		achieved:function(){
 			if(inventory[3].quantity==1){
@@ -75,5 +82,122 @@ var achievements = [
 			return 0;
 		}
 	},
-
+	{
+		name:"Buy a tiniseed",
+		completed:0,
+		prize:"1 tiniSEED",
+		img:"",
+		getprize:function(){
+			if(prizes){
+				inventory[0].quantity++;
+				update_inventory();
+			}
+		},
+		trigger:function(){
+			this.completed=1;
+			this.getprize()
+		},
+		achieved:function(){
+			return this.completed;
+		}
+	},
+	{
+		name:"Have 10 seeds planted at the same time",
+		completed:0,
+		prize:"$ 5",
+		img:"",
+		getprize:function(){
+			cash+=5
+			update_sidevalue()
+		},
+		achieved:function(){
+			res = 0
+			for (var i = size; i >= 1; i--) {
+				for (var j = size - 1; j >= 0; j--) {
+					if(($("#"+i+j).attr("content")=="tiniseed")){
+						res++;
+					}
+				}
+			}
+			if(res>9){
+				this.completed=1;
+				this.getprize()
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
+	},
+	{
+		name:"Plant an ocreseed",
+		completed:0,
+		prize:"",
+		img:"",
+		getprize:function(){alert("warn: getprize()")},
+		achieved:function(){
+			for (var i = size; i >= 1; i--) {
+				for (var j = size - 1; j >= 0; j--) {
+					if(($("#"+i+j).attr("content")=="ocreseed")){
+						this.completed=1;
+						//this.getprize()
+						return 1;
+					}
+				}
+			}	
+			return 0;
+		}
+	},
+	{
+		name:"Have more than 5 ocrefruit in your inventory",
+		completed:0,
+		prize:"",
+		img:"",
+		getprize:function(){alert("warn: getprize()")},
+		achieved:function(){
+			if(inventory[4]["quantity"]>4){
+				this.completed=1
+				//this.getprize()
+				return 1
+			}
+			return 0;
+		}
+	},
+	{
+		name:"Plant a duperseed",
+		completed:0,
+		prize:"",
+		img:"",
+		getprize:function(){alert("warn: getprize()")},
+		achieved:function(){
+			for (var i = size; i >= 1; i--) {
+				for (var j = size - 1; j >= 0; j--) {
+					if(($("#"+i+j).attr("content")=="duperseed")){
+						this.completed=1;
+						//this.getprize()
+						return 1;
+					}
+				}
+			}	
+			return 0;
+		}
+	},
+	{
+		name:"Fill the whole map with duperfruits",
+		completed:0,
+		prize:"",
+		img:"",
+		getprize:function(){alert("warn: getprize()")},
+		achieved:function(){
+			for (var i = size; i >= 1; i--) {
+				for (var j = size - 1; j >= 0; j--) {
+					if(($("#"+i+j).attr("content")!="duperfruit")){
+						return 0;
+					}
+				}
+			}
+			this.completed=1	
+			return 1;
+		}
+	}
 ]

@@ -13,7 +13,7 @@ body{
 }
 	.box{
 		background-color: #5c4d46;
-		box-shadow: 0px 0px 20px #aaa;
+		box-shadow: 0px 0px 3px #aaa;
 		position: relative;
 	}
 	#grid{
@@ -26,9 +26,9 @@ body{
 
 	}
 	.gridbox{
-		width: 50px;
-		height: 50px;
-		margin: 10px;
+		width: 65px;
+		height: 65px;
+		margin: 5px;
 		background-color: var(--lightgreen);
 
 	}
@@ -47,14 +47,14 @@ body{
 		width: 100px;
 	}
 	.sidevalue{
-		width: 100px;
-	    margin-top: 20px;
-	    color: var(--darkgreen);
-	    background: var(--lightgreen);
-	    padding: 5px;
-	    box-shadow: 0px 0px 3px grey;
-	    display: flex;
-	    justify-content: space-between;
+		    color: white;
+    background: var(--darkgreen);
+    padding: 5px;
+    box-shadow: 0px 0px 0px;
+    display: flex;
+    justify-content: end;
+    border: solid 1px;
+    padding: 7px;
 	}
 	#main{
 		display: flex;
@@ -62,6 +62,9 @@ body{
 		padding-top: 10%;
 	}
 	.choose{
+		background-color: #c0aca2;
+	}
+	.planting{
 		background-color: #c0aca2;
 	}
 	.choosen{
@@ -72,23 +75,22 @@ body{
 	}
 	.apex{
 		position: absolute;
-		left: 65%;
+		left: 78%;
 		top: 1%;
 		font-weight: 800;
 		color:#272414;
 		font-size: 15px;
 	}
-	.price{
-
-		font-weight: 500;
-font-size: 13px;
-margin: 7% 11%;
-background: #e4deb5;
-color: #20695f;
-padding: 0% 7%;
-box-shadow: inset 0px 0px 2px #ececec;
-width: 35%;
-display: flex;
+	.price{    font-weight: 500;
+    font-size: 13px;
+    margin: 7% 7%;
+    background: #e4deb5;
+    color: #20695f;
+    padding: 3% 0%;
+    box-shadow: inset 0px 0px 2px #ececec;
+    width: 49%;
+    display: flex;
+    height: 12px;
 	}
 	.hidden{
 		display: none;
@@ -147,12 +149,13 @@ display: flex;
 		font-weight: 800;
 	}
 	.inventory{
-    height: 61%;
+		    height: 315px;
     margin-top: 10%;
-    background: #fdebc5;
-		text-align: center;
-		padding: 5%;
-		width: 100px;
+    background: #382c27;
+    text-align: center;
+    padding: 5%;
+    width: 100px;
+    overflow: scroll;
 	}
 	.inventory_item{
     width:50%;
@@ -189,102 +192,178 @@ padding: 5% 15%;
 	}
 	.shoplabel{
 		    line-height: 0px;
-    font-size: 13px;
-    padding-top: 15%;
-    margin-top: -19%;
+    font-size: 12px;
+    padding-top: 25%;
+    margin-top: -17%;
     background-color: #8eccbb;
     margin-bottom: 5%;
     height: 13px;
     border-radius: 5px;
-    font-weight: 800;
-    color: #f9f8d8;
+    font-weight: 900;
     padding-left: 6%;
     padding-right: 6%;
-    width: 100%;
-    margin-left: -7%;
+    width: 117%;
+    margin-left: -16%;
+    font-family: helvetica;
+    color: #20695f;
+    letter-spacing: 0px;
 	}
 	.shopcard{
 		position:relative;
 		width:75px;
 		box-shadow: 0px 0px 10px #a5a3a3;
-		margin:2%;
+		margin:2% 5%;
 	}
-	.shopbtn{
-
-		    display: flex;
-    background: #8eccbb;
-    padding: 1% 3%;
-    box-shadow: 0px 0px 3px #cecece;
-    color: #f9f8d8;
-    width: 140%;
-    margin-left: -21%;
-
+	.shopbtn{ 
+		display: flex;
+		background: #8eccbb;
+		padding: 1% 3%;
+		box-shadow: 0px 0px 3px #cecece;
+		color: #f9f8d8;
+		width: 112%;
+		margin-left: -25%;
+		position: absolute;
 	}
 	#tiniseed{
 		width: 25%;
-	padding: 20%;
+		padding: 20%;
+	}
+	#ocreseed{
+		width: 40%;
+		padding: 13%;
 	}
 	.grid_tiniseed{
-		width: 30px;
+		width: 40px;
 		margin: 18%;
 	}
-	.grid_tinifruit{
+	.grid_ocreseed{
 		width: 50px;
+		margin: 11%;
+	}
+	.grid_duperseed{
+		width: 50px;
+		margin: 11%;
+	}
+	.grid_tinifruit{
+		width: 80%;
+margin: 10%;
+	}
+	.grid_ocrefruit{
+		    width: 100%;
+    margin-top: -33%;
+	}
+	.grid_duperfruit{
+		    width: 130%;
+    margin-left: -20%;
+    margin-top: -37%;
 	}
 	.arrow{
 		    position: absolute;
-    left: 80%;
-    top: 67%;
+		    left: 91%;
+		    top: 63%;
 	}
-	.achievement_box{padding: 0.5% 1%;
-background: #9fb09f;
-height: 20px;
-width: 44.5%;
-margin-left: 25.9%;
-margin-top: 0%;
-display: flex;
-justify-content: space-between;
-color: white;
+	.achievement_box{
+		padding: 0.5% 1%;
+		background: #382c27;
+		height: 20px;
+		width: 46.2%;
+		margin-left: 25.9%;
+		margin-top: 0%;
+		display: flex;
+		justify-content: space-between;
+		color: white;
 	}
 	.achieved{
 		background: #49b149;
 	}
 	.prizeimg{
-		    width: 50px;
-    position: absolute;
-    top: -25px;
-    left: -50px;
+		width: 50px;
+	    position: absolute;
+	    top: -25px;
+	    left: -50px;
 	}
 	#opacityscreen{
 		position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: black;
-opacity: 0.5;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0.5;
 	}
-	#popup{    position: absolute;
-    top: 24%;
-    left: 38%;
-    height: 20%;
-    background-color: antiquewhite;
-    text-align: center;
-    padding: 2%;
-    border: solid 9px #699e65;
+	#popup{    
+		position: absolute;
+	    top: 24%;
+	    left: 38%;
+	    height: 20%;
+	    background-color: antiquewhite;
+	    text-align: center;
+	    padding: 2%;
+	    border: solid 9px #699e65;
 }
 .okbutton{
 	    margin-top: 0%;
-    border-radius: 0px;
-    padding: 1% 12%;
-    background: #699e65;
-    color: white;
-    font-size: 18px;
-    text-transform: uppercase;
+	    border-radius: 0px;
+	    padding: 1% 12%;
+	    background: #699e65;
+	    color: white;
+	    font-size: 18px;
+	    text-transform: uppercase;
 }
 .popupimg{
 	    width: 50px;
-    padding: 10%;
-    border: solid 2px #699e65;
-    margin: 5%;
+	    padding: 10%;
+	    border: solid 2px #699e65;
+	    margin: 5%;
+}
+/* PROGRESS CIRCLE COMPONENT */
+.circliful {
+    
+    position: relative; 
+}
+
+.circle-text, .circle-info, .circle-text-half, .circle-info-half {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+}
+
+.circle-info, .circle-info-half {
+	color: #999;
+}
+
+.circliful .fa {
+	margin: -10px 3px 0 3px;
+	position: relative;
+	bottom: 4px;
+}
+#progress_container{
+	position: absolute;
+	z-index: 2;
+top: 1%;
+left: 1%;
+background: #5c4d46;
+border-radius: 50%;
+}
+.shoprow{
+	    display: flex;
+    margin: 0% 2px;
+    justify-content: flex-start;
+    border-bottom: solid 1px grey;
+    padding-bottom: 8%;
+    padding-top: 4%;
+
+    height: 30%;
+}
+#timecontroller{
+	    position: absolute;
+    color: white;
+    top: 2%;
+    left: 37%;
+    border: solid 1px;
+    font-size: 16px;
+    padding: 5px;
+    width: 47%;
+
 }

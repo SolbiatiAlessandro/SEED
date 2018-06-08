@@ -5,44 +5,97 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body style="background-color: #b2c2b2;" >
+<body style="background-color: black;" >
 <div id="main">
 	<div class="box" id="side-menu">
 		<!--<Div class="box" style="text-align: center;">LEVEL <span id="level"></span></Div>-->
-		<div class="box sidevalue"><div>Season:</div> <div id="season"></div></div>
-		<div class="box sidevalue"><div>Cash:</div> $<div id="cash"></div></div>
+		
+		<!--<div class="box sidevalue"><div>Season:</div> <div id="season"></div></div>-->
+		<div id="progress_container" >
+			<div id='progress' data-dimension='50' data-text='1' data-fontsize='19' data-percent='100' data-fgcolor='#382c27' data-bgcolor='#eee' data-width='15' data-bordersize='5' data-animationstep='0.1' style="color: white;">			
+			</div>
+			
+		</div>
+		<!--<div id="timecontroller">Freeze</div>-->
 		<div class="box inventory"></div>
 	</div>
 	<div class="box" id="grid">
 	</div>
 	<div class="box" id="side-menu">
-		<div class="box sidebutton" id="next">Next Season</div>
+		<!--<div class="box sidebutton" id="next">Next Season</div>-->
+		
+		
+		<div class="box sidevalue"><div></div> <div id="cash"></div>$
+		</div>
+		
+		
 		<div class="box sidebutton" id="shop">Shop</div>
 		<div class="box sidebutton" id="restart" style="background: white;">RESTART</div>
 	</div>
 </div>
 <div id="shop_box" class="box hidden" style="text-align:center;">
 	<h1 style="font-size:  15px;background: #f9f8d8;padding: 2%;color: #20695f;font-weight: 700;box-shadow: 0px 0px 1px #1e3c90;">SHOP</h1>
-	<div  style="display:flex;">
+	<div  class="shoprow">
+		<div class="shopcard">	
+			<div class="shopimg" id="buy_tiniseed">
+			<div class="shoplabel">tiniseed</div>
+			<img src="img/tiniseed.png" height="50" >
+			<div class="shopbtn" id="tiniseed_btn">
+				<h2 style="font-size:  13px;line-height:  5px;">BUY</h2>
+				<div id="price_tiniseed" class="price">$</div>
+			</div>
+			</div>
+		</div>
+		<div class="shopcard">	
+			<div class="shopimg" id="buy_ocreseed">
+			<div class="shoplabel" >ocreseed</div>
+			<img src="img/ocreseed.png" height="50" >
+			<div class="shopbtn" id="ocreseed_btn">
+				<h2 style="font-size:  13px;line-height:  5px;">BUY</h2>
+				<div id="price_ocreseed" class="price">$25</div>
+			</div>
+			</div>
+		</div>
+		<div class="shopcard">	
+			<div class="shopimg" id="buy_duperseed">
+			<div class="shoplabel">duperseed</div>
+			<img src="img/duperseed.png" height="50">
+			<div class="shopbtn" id="duperseed_btn">
+				<h2 style="font-size:  13px;line-height:  5px;">BUY</h2>
+				<div id="price_duperseed" class="price">$499</div>
+			</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="shoprow">
 		<div class="shopcard">
-			
 			<div class="shopimg" id="sell_tinifruit">
 			<div class="shoplabel">tinifruit</div>
-			<img src="img/tinifruit.png" width="50" >
+			<img src="img/tinifruit.png" height="50" >
 			<div class="shopbtn">
 				<h2 style="font-size:  13px;line-height:  5px;">SELL</h2>
 				<div id="price_tinifruit" class="price">$5<div><img src='img/up.png' width='20'></div></div>
 			</div>
-		</div>
+			</div>
 		</div>
 		<div class="shopcard">
-			
-			<div class="shopimg" id="buy_tiniseed">
-			<div class="shoplabel">tiniseed</div>
-			<img src="img/tiniseed.png" width="50" >
+			<div class="shopimg" id="sell_ocrefruit">
+			<div class="shoplabel">ocrefruit</div>
+			<img src="img/ocrefruit.png" height="50" >
 			<div class="shopbtn">
-				<h2 style="font-size:  13px;line-height:  5px;">BUY</h2>
-				<div id="price_tiniseed" class="price">$1</div>
+				<h2 style="font-size:  13px;line-height:  5px;">SELL</h2>
+				<div id="price_ocrefruit" class="price">$100<div><img src='img/up.png' width='20'></div></div>
+			</div>
+			</div>
+		</div>
+		<div class="shopcard">
+			<div class="shopimg" id="sell_duperfruit">
+			<div class="shoplabel">duperfruit</div>
+			<img src="img/duperfruit.png" height="50" >
+			<div class="shopbtn">
+				<h2 style="font-size:  13px;line-height:  5px;">SELL</h2>
+				<div id="price_duperfruit" class="price">$495<div><img src='img/up.png' width='20'></div></div>
 			</div>
 			</div>
 		</div>
@@ -50,11 +103,11 @@
 </div>
 <!--<div class="outerprogress"><div class="innerprogress"></div></div>-->
 <div class="achievement_box" style="justify-content: center;height: 5px;border-bottom: solid 1px;padding-top:1%;"">
-	<div style="margin-top: -1%;">ACHIEVEMENT <span id="achievement_curr"></span>/<span id="achievement_tot"></span>
+	<div style="margin-top: -1%;">ACHIEVEMENTS <span id="achievement_curr"></span>/<span id="achievement_tot"></span>
 	</div>
 </div>
 <div class="achievement_box">
-	<div id="achievement" style="font-weight: 600;"></div>
+	<div id="achievement" style="font-weight: 600;font-family: helvetica;"></div>
 	<div id="prize" style="position: relative;"></div>
 </div>
 
@@ -64,11 +117,12 @@
 	<button class="okbutton" onclick="removepopup()">ok</button>
 </div>
 
-
 </body>
+<script type="text/javascript" src="js/progress_circle.js"></script>
 <script type="text/javascript" src="js/inventory.js"></script>
 <script type="text/javascript" src="js/levels.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/audio.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+
 </html>
