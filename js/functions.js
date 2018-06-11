@@ -34,6 +34,7 @@ function update_inventory(){
 		$("#sell_duperfruit").addClass("hidden");
 	}
 }
+// deprecated
 function update_values(i){
 	level = levels[i]["level"];
 	$("#level").text(level)
@@ -44,7 +45,7 @@ function update_values(i){
 	size = levels[i]["size"]
 }
 function update_sidevalue() {
-	$("#season").text(season);
+	$("#seasonhere").text(" "+season);
 	$("#seeds").text(seeds);
 	$("#fruits").text(fruits);
 	$("#cash").text(cash);
@@ -253,4 +254,10 @@ function plant(content, index){
 			update_inventory()
 		}
 	}
+}
+function hasfruit(index) {
+	if($("#"+index).attr("content") == "tinifruit" || $("#"+index).attr("content") == "ocrefruit" || $("#"+index).attr("content") == "duperfruit"){
+		return 1
+	} 
+	return 0
 }

@@ -367,3 +367,10 @@ border-radius: 50%;
     width: 47%;
 
 }
+
+.chicken{
+	position: absolute;
+	right: -20%;
+	bottom: 0%;
+	transition-duration: 0.3s;
+}

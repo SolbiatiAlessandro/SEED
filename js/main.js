@@ -9,7 +9,10 @@ $(function(){
 	update_price()
 	update_values(0)
 	update_sidevalue()
+	/*
+	automatic season progress
 	$("#progress").circliful()
+	*/
 	$("#achievement").text(achievements[0].name)
 	if(prizes){
 		$("#prize")[0].innerHTML = achievements[0].prize+"<img class='prizeimg' src='"+achievements[0].img+"'>"
@@ -39,28 +42,34 @@ $(function(){
 	})
 	$(".gridbox").on('click',function(){
 		var index = parseInt($(this).attr("id"))
-		if($(this).hasClass("tiniseed")){ //planting tiniseed
+		if($(this).hasClass("tiniseed") && !hasfruit(index)){ //planting tiniseed
 			plant("tiniseed",index)
 		}
-		else if($(this).hasClass("ocreseed")){ //planting ocreseed
+		else if($(this).hasClass("ocreseed") && !hasfruit(index)){ //planting ocreseed
 			plant("ocreseed",index)
 		}
-		else if($(this).hasClass("duperseed")){ //planting duperseed
+		else if($(this).hasClass("duperseed") && !hasfruit(index)){ //planting duperseed
 			plant("duperseed",index)
 		}
 		else if($(this).attr("content")=="tinifruit"){ //harvesting tinifruit
+			$(".gridbox").removeClass("planting")
+			$(".gridbox").removeClass("tiniseed")	
 			var i = $(this).attr("id");
 			inventory[3]["quantity"]++;
 			clean(i)
 			update_inventory()
 		}
 		else if($(this).attr("content")=="ocrefruit"){ //harvesting ocrefruit
+			$(".gridbox").removeClass("planting")
+			$(".gridbox").removeClass("tiniseed")	
 			var i = $(this).attr("id");
 			inventory[4]["quantity"]++;
 			clean(i)
 			update_inventory()
 		}
 		else if($(this).attr("content")=="duperfruit"){ //harvesting duperfruit
+			$(".gridbox").removeClass("planting")
+			$(".gridbox").removeClass("tiniseed")	
 			var i = $(this).attr("id");
 			inventory[5]["quantity"]++;
 			clean(i)

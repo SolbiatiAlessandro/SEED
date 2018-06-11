@@ -6,7 +6,7 @@ var inventory = [
 	},
 		{
 		"name":"ocreseed",
-		"quantity":0,
+		"quantity":2,
 		"price":25
 	},
 		{
