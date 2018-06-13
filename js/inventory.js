@@ -6,12 +6,12 @@ var inventory = [
 	},
 		{
 		"name":"ocreseed",
-		"quantity":2,
+		"quantity":3,
 		"price":25
 	},
 		{
 		"name":"duperseed",
-		"quantity":0,
+		"quantity":3,
 		"price":499
 	},
 		{

@@ -26,7 +26,7 @@ $(function(){
 	$("#price_duperseed").text("$"+inventory[2]["price"])
 
 
-	for (var i = size; i >= 1; i--) {
+	for (var i = size-1; i >= 0; i--) {
 		$("#grid").append("<div id='"+i+"' class='row'></div>")
 		for (var j = size - 1; j >= 0; j--) {
 			$("#"+i).append("<div id='"+i+j+"' class='box gridbox' content="+"><span class='debug' id='debug"+i+j+"'></span></div>")

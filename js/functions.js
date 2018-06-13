@@ -122,6 +122,7 @@ function sell_fruits() {
 function next_season(){
 
 	for (var i = lifespan.length - 1; i >= 0; i--) {
+		r = Math.random()>0.5
 		//$("#debug"+i).text(lifespan[i])
 		if(lifespan[i]!=-1){
 			--lifespan[i];
@@ -137,6 +138,13 @@ function next_season(){
 					$("#lifespan"+i).text("")
 					$("#"+i).toggleClass("fruit")
 					$("#"+i).attr("content","tinifruit")
+					if(1){
+						console.log("chicken "+i+" "+i%10+" "+Math.floor(i/10))
+						var chicken = newchicken()
+						chicken.eatfruit(i%10,Math.floor(i/10))
+					}
+
+
 				}
 				else if($("#"+i).attr("content")=="ocreseed"){
 					$("#img"+i).attr("src","img/ocrefruit.png")
