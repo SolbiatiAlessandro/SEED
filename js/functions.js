@@ -121,6 +121,7 @@ function sell_fruits() {
 }
 function next_season(){
 
+	$(".gridbox").attr("class","box gridbox")
 	for (var i = lifespan.length - 1; i >= 0; i--) {
 		r = Math.random()>0.5
 		//$("#debug"+i).text(lifespan[i])
@@ -141,7 +142,7 @@ function next_season(){
 					if(1){
 						console.log("chicken "+i+" "+i%10+" "+Math.floor(i/10))
 						var chicken = newchicken()
-						chicken.eatfruit(i%10,Math.floor(i/10))
+						chicken.eatfruit((i%10),Math.floor(i/10),100)
 					}
 
 

@@ -1,17 +1,17 @@
 var inventory = [
 		{
 		"name":"tiniseed",
-		"quantity":3,
+		"quantity":1,
 		"price":1
 	},
 		{
 		"name":"ocreseed",
-		"quantity":3,
+		"quantity":0,
 		"price":25
 	},
 		{
 		"name":"duperseed",
-		"quantity":3,
+		"quantity":0,
 		"price":499
 	},
 		{

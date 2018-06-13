@@ -374,3 +374,7 @@ border-radius: 50%;
 	bottom: 0%;
 	transition-duration: 0.3s;
 }
+.chickenimg{
+	height: 90px;
+	margin-right: -30px;
+}

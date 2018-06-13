@@ -4,7 +4,7 @@ var level,victory_time,size,seedprice,MAXfruit_price;
 
 $(function(){
 
-	playTrack("sounds/Seeds0.mp3");
+	//playTrack("sounds/Seeds0.mp3");
 	update_inventory()
 	update_price()
 	update_values(0)
