@@ -123,7 +123,7 @@ function next_season(){
 
 	$(".gridbox").attr("class","box gridbox")
 	for (var i = lifespan.length - 1; i >= 0; i--) {
-		r = Math.random()>0.5
+		r = Math.random()>0.3
 		//$("#debug"+i).text(lifespan[i])
 		if(lifespan[i]!=-1){
 			--lifespan[i];
@@ -139,7 +139,7 @@ function next_season(){
 					$("#lifespan"+i).text("")
 					$("#"+i).toggleClass("fruit")
 					$("#"+i).attr("content","tinifruit")
-					if(1){
+					if(r){
 						console.log("chicken "+i+" "+i%10+" "+Math.floor(i/10))
 						var chicken = newchicken()
 						chicken.eatfruit((i%10),Math.floor(i/10),100)
